@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 import { getBeanieBabies } from './services/fetch-utils';
-import BeaniesList from './BeaniesList';
+import BeaniesList from './BeaniesList.js';
 
 function App() {
   const [beanieBabies, setBeanieBabies] = useState([]);
@@ -18,19 +18,24 @@ function App() {
     }
 
     fetch();
-  }, []); // what can you do with this array to trigger a fetch every time the page changes?
-
+  }, [page]); // what can you do with this array to trigger a fetch every time the page changes?
+ 
   return (
     <>
       <h2>Current Page {page}</h2>
       <div className='buttons'>
         {/* on click, this button should decrement the page in state  */}
         {/* also, disable this button when you are on the first page */}
-        <button>Previous Page</button>
+        <button
+          onClick={() => setPage(page - 1)}
+          disabled={page === 1}>Previous Page</button>
         {/* on click, this button should increment the page in state  */}
-        <button >Next Page</button>
+        <button 
+          onClick={() => setPage(page + 1)}
+          disabled={beanieBabies.length < perPage}>Next Page</button>
       </div>
       {/* pass the beanie babies into the BeaniesList component */}
+      <BeaniesList beanieBabies={beanieBabies}/>
     </>
   );
 }

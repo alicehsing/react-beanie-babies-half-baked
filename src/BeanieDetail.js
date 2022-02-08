@@ -15,10 +15,11 @@ export default function BeanieDetail() {
       setBeanieBaby(data);
     }
     fetchBeanieBaby();
-  }, []); // note that you'll want the id from the url in the dependency array because you want the useEffect callback to get called every time the url changes 
+  }, [params.id]); // note that you'll want the id from the url in the dependency array because you want the useEffect callback to get called every time the url changes 
 
   function handleBeanieClick() {
     // here's a challenge. How can you link on click to the beanie baby's correct entry in the official beanie baby fan site?
+    window.location.href === beanieBaby.link;
   }
   
   return (

@@ -19,12 +19,16 @@ function App() {
       setBeanieBabies(beanies);
     }
     fetch();
-    
+
+  }, [page]); // what can you do with this array to trigger a fetch every time the page changes?
+
+ //STRETCH: FILTER/SEARCH BAR
+  useEffect(() => {
     const tempFilter = beanieBabies.filter(beanie => beanie.title.includes(currentQuery));
     setFilteredBeanies(tempFilter);
     
-  }, [page, currentQuery, beanieBabies]); // what can you do with this array to trigger a fetch every time the page changes?
-
+  }, [currentQuery, beanieBabies]);
+  
   return (
     <>
       <h2>Current Page: {page}</h2>

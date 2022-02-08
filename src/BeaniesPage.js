@@ -24,13 +24,12 @@ function App() {
     setFilteredBeanies(tempFilter);
     
   }, [page, currentQuery, beanieBabies]); // what can you do with this array to trigger a fetch every time the page changes?
-  
+
   return (
     <>
-      <h2>Current Page {page}</h2>
+      <h2>Current Page: {page}</h2>
       <div className='search'>
-        <p>Filter Beanie Babies</p>
-        <input value={currentQuery} onChange={(e) => setCurrentQuery(e.target.value)}/>
+        <input value={currentQuery} placeholder='Search' type='text' onChange={(e) => setCurrentQuery(e.target.value)}/>
       </div>
       <div className='buttons'>
         {/* on click, this button should decrement the page in state  */}
